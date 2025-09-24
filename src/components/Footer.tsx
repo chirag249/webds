@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
               <span className="text-2xl font-serif font-bold">ARS Catering</span>
             </div>
             <p className="text-secondary-300">
-              Creating unforgettable culinary experiences for your special moments since 2010.
+              Creating unforgettable culinary experiences for your special moments since 2020.
             </p>
           </motion.div>
 
@@ -52,15 +52,15 @@ const Footer: React.FC = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-primary-500" />
-                <span className="text-secondary-300">+1 (555) 123-4567</span>
+                <span className="text-secondary-300">9845464183</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-primary-500" />
-                <span className="text-secondary-300">info@arscatering.com</span>
+                <span className="text-secondary-300">arscaterersblr@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-5 w-5 text-primary-500" />
-                <span className="text-secondary-300">123 Culinary Street, Foodville, FC 12345</span>
+                <span className="text-secondary-300">1st Flore, 2, Uttarahalli Main Rd, BHCS Layout II Stage, Canara Bank Colony, Chikkalasandra, Bengaluru, Karnataka 560061</span>
               </div>
             </div>
           </motion.div>

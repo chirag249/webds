@@ -1,256 +1,264 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import "./Menu.css"; // styles for book/card effect
+
+interface MenuItem {
+  id: string;
+  name: string | string[];
+  description: string;
+  ingredients: string[];
+  dietary: string[];
+  price: string;
+  image: string;
+}
 
 const Menu: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState('starters');
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
 
-  const menuCategories = [
-    { id: 'starters', name: 'Starters', icon: '🥗' },
-    { id: 'mains', name: 'Main Course', icon: '🍽️' },
-    { id: 'desserts', name: 'Desserts', icon: '🍰' },
-    { id: 'beverages', name: 'Beverages', icon: '🥤' },
+  const menuItems: MenuItem[] = [
+    {
+      id: "welcome-drinks",
+      name: [
+        "Fruit Punch",
+        "Watermelon Juice",
+        "Pulpy Grape Juice",
+        "Mint Lime Juice",
+        "Milk Shake (Optional)",
+        "Cold Badam Milk",
+        "Sugarcane Juice",
+        "Hesaru Baayru",
+        "Ragi Baayru",
+        "Ellu Baayru",
+      ],
+      description: "Welcome Drinks (Any One)",
+      ingredients: ["Fresh Fruits", "Sugar", "Herbs"],
+      dietary: ["Vegetarian"],
+      price: "-",
+      image:
+        "https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      id: "kosambari",
+      name: [
+        "Corn Pomegranate Kosambari",
+        "Hesarubele Kosambari",
+        "Kadalebele Kosambari",
+        "Molake Kalu Kosambari",
+        "Congress Kosambari",
+        "Guava Kosambari",
+      ],
+      description: "Kosambari (Any One)",
+      ingredients: ["Lentils", "Vegetables", "Lemon Juice", "Spices"],
+      dietary: ["Vegetarian", "Vegan"],
+      price: "-",
+      image:
+        "https://www.indianveggiedelight.com/wp-content/uploads/2022/03/hesarubele-kosambari.jpg",
+    },
+    {
+      id: "starters-north-indian",
+      name: [
+        "Hara Bhara Kabab",
+        "French Fries",
+        "Cheese Ball",
+        "Babycorn Manchurian",
+        "Mushroom Manchurian",
+        "Veg Ball Manchurian",
+        "Paneer Manchurian",
+        "Gobi Manchurian",
+      ],
+      description: "Starters (Any One)",
+      ingredients: ["Vegetables", "Paneer", "Flour", "Spices"],
+      dietary: ["Vegetarian"],
+      price: "-",
+      image:
+        "https://images.pexels.com/photos/541216/pexels-photo-541216.jpeg",
+    },
+    {
+      id: "starters-south-indian",
+      name: [
+        "Bajji (Varieties)",
+        "Kaju Pakoda",
+        "Sabakki Bonda",
+        "Ambode",
+        "Rava Banana",
+        "Baby Corn Rava",
+        "Jackfruit Kabab",
+      ],
+      description: "Starters (Any One)",
+      ingredients: ["Gram Flour", "Vegetables", "Lentils", "Spices"],
+      dietary: ["Vegetarian"],
+      price: "-",
+      image:
+        "https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      id: "palya",
+      name: [
+        "Thondekai Kaju Palya",
+        "Carrot Beans Palya",
+        "Suvarnagadde Palya",
+        "Mix Veg Palya",
+        "Alasande Palya",
+        "Bendi Palya",
+        "Kabulchanna Palya",
+      ],
+      description: "Palya (Any Two)",
+      ingredients: ["Assorted Vegetables", "Coconut", "Spices"],
+      dietary: ["Vegetarian"],
+      price: "-",
+      image:
+        "https://media.istockphoto.com/id/1549569369/photo/pakistani-famous-mix-vegetables.jpg?s=2048x2048&w=is&k=20&c=xmengezK9qhXa5jldhfkhU1yUaP4mWSn66sm91p5kFU=",
+    },
+    {
+      id: "rice-bath",
+      name: [
+        "Veg Pulav",
+        "Veg Biriyani",
+        "Vangi Bath",
+        "Methi Bath",
+        "Pudina Bath",
+        "Besibele Bath",
+        "Tomato Bath",
+        "Palak Rice Bath",
+      ],
+      description: "Rice Bath (Any One)",
+      ingredients: ["Rice", "Vegetables", "Ghee", "Spices"],
+      dietary: ["Vegetarian"],
+      price: "-",
+      image:
+        "https://images.pexels.com/photos/17910326/pexels-photo-17910326.jpeg",
+    },
+    {
+      id: "sweets",
+      name: [
+        "Jilebi",
+        "Mysorepak",
+        "Rasmalai",
+        "Cham Cham",
+        "Gulab Jamun",
+        "Carrot Halwa",
+        "Kashi Halwa",
+      ],
+      description: "Sweets (Any Two)",
+      ingredients: ["Milk Solids", "Sugar", "Flour", "Ghee"],
+      dietary: ["Vegetarian"],
+      price: "-",
+      image:
+        "https://www.pexels.com/photo/kaju-katri-18488310/",
+    },
+    {
+      id: "ice-cream",
+      name: [
+        "Vanilla",
+        "Strawberry",
+        "Mango",
+        "Butterscotch",
+        "Pista",
+        "Chocolate",
+      ],
+      description: "Ice Cream (Any One)",
+      ingredients: ["Milk", "Cream", "Sugar", "Flavoring"],
+      dietary: ["Vegetarian"],
+      price: "-",
+      image:
+        "https://images.pexels.com/photos/1352278/pexels-photo-1352278.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
   ];
-
-  const menuItems = {
-    starters: [
-      {
-        id: 'bruschetta',
-        name: 'Artisan Bruschetta',
-        price: '$12.99',
-        description: 'Fresh tomatoes, basil, and mozzarella on toasted artisan bread',
-        ingredients: ['Roma tomatoes', 'Fresh basil', 'Mozzarella', 'Olive oil', 'Balsamic glaze'],
-        dietary: ['Vegetarian'],
-        image: 'https://images.pexels.com/photos/1643771/pexels-photo-1643771.jpeg?auto=compress&cs=tinysrgb&w=400'
-      },
-      {
-        id: 'shrimp',
-        name: 'Coconut Shrimp',
-        price: '$16.99',
-        description: 'Crispy coconut-crusted shrimp with mango chutney',
-        ingredients: ['Jumbo shrimp', 'Coconut flakes', 'Mango chutney', 'Sweet chili sauce'],
-        dietary: ['Gluten-free available'],
-        image: 'https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?auto=compress&cs=tinysrgb&w=400'
-      },
-      {
-        id: 'cheese-board',
-        name: 'Gourmet Cheese Board',
-        price: '$24.99',
-        description: 'Selection of artisan cheeses with fruits and nuts',
-        ingredients: ['Aged cheddar', 'Brie', 'Goat cheese', 'Seasonal fruits', 'Mixed nuts', 'Honey'],
-        dietary: ['Vegetarian', 'Gluten-free'],
-        image: 'https://images.pexels.com/photos/1229149/pexels-photo-1229149.jpeg?auto=compress&cs=tinysrgb&w=400'
-      },
-    ],
-    mains: [
-      {
-        id: 'salmon',
-        name: 'Grilled Atlantic Salmon',
-        price: '$28.99',
-        description: 'Fresh salmon with lemon herb butter and seasonal vegetables',
-        ingredients: ['Atlantic salmon', 'Lemon', 'Fresh herbs', 'Seasonal vegetables', 'Wild rice'],
-        dietary: ['Gluten-free', 'Healthy choice'],
-        image: 'https://images.pexels.com/photos/842571/pexels-photo-842571.jpeg?auto=compress&cs=tinysrgb&w=400'
-      },
-      {
-        id: 'beef',
-        name: 'Prime Ribeye Steak',
-        price: '$42.99',
-        description: 'USDA Prime ribeye with garlic mashed potatoes and red wine reduction',
-        ingredients: ['Prime ribeye', 'Garlic mashed potatoes', 'Asparagus', 'Red wine reduction'],
-        dietary: ['Gluten-free'],
-        image: 'https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=400'
-      },
-      {
-        id: 'pasta',
-        name: 'Truffle Mushroom Risotto',
-        price: '$22.99',
-        description: 'Creamy Arborio rice with wild mushrooms and truffle oil',
-        ingredients: ['Arborio rice', 'Wild mushrooms', 'Truffle oil', 'Parmesan', 'Fresh herbs'],
-        dietary: ['Vegetarian'],
-        image: 'https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=400'
-      },
-    ],
-    desserts: [
-      {
-        id: 'tiramisu',
-        name: 'Classic Tiramisu',
-        price: '$8.99',
-        description: 'Traditional Italian tiramisu with espresso and mascarpone',
-        ingredients: ['Mascarpone', 'Ladyfingers', 'Espresso', 'Cocoa powder', 'Marsala wine'],
-        dietary: ['Contains alcohol'],
-        image: 'https://images.pexels.com/photos/6102166/pexels-photo-6102166.jpeg?auto=compress&cs=tinysrgb&w=400'
-      },
-      {
-        id: 'chocolate-cake',
-        name: 'Decadent Chocolate Cake',
-        price: '$7.99',
-        description: 'Rich chocolate cake with raspberry coulis and fresh berries',
-        ingredients: ['Dark chocolate', 'Fresh raspberries', 'Vanilla cream', 'Cocoa'],
-        dietary: ['Vegetarian'],
-        image: 'https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=400'
-      },
-    ],
-    beverages: [
-      {
-        id: 'wine',
-        name: 'House Wine Selection',
-        price: '$8.99',
-        description: 'Curated selection of red and white wines',
-        ingredients: ['Red wine', 'White wine', 'Rosé'],
-        dietary: ['Contains alcohol', '21+'],
-        image: 'https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=400'
-      },
-      {
-        id: 'coffee',
-        name: 'Artisan Coffee Bar',
-        price: '$4.99',
-        description: 'Freshly brewed specialty coffees and teas',
-        ingredients: ['Premium coffee beans', 'Various teas', 'Milk alternatives'],
-        dietary: ['Vegan options available'],
-        image: 'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=400'
-      },
-    ],
-  };
 
   const toggleExpanded = (itemId: string) => {
     const newExpanded = new Set(expandedItems);
-    if (newExpanded.has(itemId)) {
-      newExpanded.delete(itemId);
-    } else {
-      newExpanded.add(itemId);
-    }
+    newExpanded.has(itemId)
+      ? newExpanded.delete(itemId)
+      : newExpanded.add(itemId);
     setExpandedItems(newExpanded);
   };
 
+  const renderItemName = (name: string | string[]) => {
+    if (Array.isArray(name)) {
+      return (
+        <ul className="text-center text-sm leading-tight space-y-1">
+          {name.map((subName) => (
+            <li key={subName}>{subName}</li>
+          ))}
+        </ul>
+      );
+    }
+    return <p className="text-center font-semibold text-lg">{name}</p>;
+  };
+
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 bg-gray-50">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-primary-50 to-secondary-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center"
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h1
+            className="text-5xl font-serif font-bold text-secondary-800 mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl font-serif font-bold text-secondary-800 mb-6">
-              Our Menu
-            </h1>
-            <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Discover our carefully crafted menu featuring fresh, locally-sourced ingredients 
-              and dishes designed to delight every palate.
-            </p>
-          </motion.div>
+            ARS Catering Menu
+          </motion.h1>
+          <p className="text-xl text-secondary-600">
+            Handpicked South Indian Dishes from Bengaluru
+          </p>
         </div>
       </section>
 
-      {/* Menu Categories */}
-      <section className="py-8 bg-white sticky top-20 z-40 border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-4">
-            {menuCategories.map((category) => (
-              <motion.button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  activeCategory === category.id
-                    ? 'bg-primary-600 text-white'
-                    : 'bg-secondary-100 text-secondary-700 hover:bg-primary-100'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span className="text-lg">{category.icon}</span>
-                <span>{category.name}</span>
-              </motion.button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Menu Items */}
+      {/* Menu Cards */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              {menuItems[activeCategory as keyof typeof menuItems].map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="relative h-48 overflow-hidden">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {menuItems.map((item) => (
+              <div key={item.id} className="flex justify-center">
+                <div className="book">
+                  {/* Front side */}
+                  <div className="p-4 flex items-center justify-center h-full">
+                    {renderItemName(item.name)}
+                  </div>
+
+                  {/* Cover (hover reveal) */}
+                  <div className="cover flex flex-col items-center justify-center p-4">
                     <img
                       src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                      alt={
+                        Array.isArray(item.name) ? item.name.join(", ") : item.name
+                      }
+                      className="w-32 h-32 object-cover rounded-md mb-2 shadow-md"
                     />
-                    <div className="absolute top-4 right-4 bg-white bg-opacity-90 backdrop-blur-sm rounded-full px-3 py-1">
-                      <span className="font-bold text-primary-600">{item.price}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-xl font-serif font-bold text-secondary-800">
-                        {item.name}
-                      </h3>
-                    </div>
-                    
-                    <p className="text-secondary-600 mb-4">
-                      {item.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {item.dietary.map((diet) => (
-                        <span
-                          key={diet}
-                          className="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full"
-                        >
-                          {diet}
-                        </span>
-                      ))}
-                    </div>
-                    
+                    <p className="text-sm text-center">{item.description}</p>
+
+                    {/* Expand Button */}
                     <motion.button
                       onClick={() => toggleExpanded(item.id)}
-                      className="flex items-center justify-between w-full text-primary-600 hover:text-primary-700 font-medium"
+                      className="mt-3 flex items-center justify-between w-full text-primary-600 hover:text-primary-700 font-medium"
                       whileHover={{ x: 5 }}
                     >
-                      <span>View Ingredients</span>
+                      <span>View Details</span>
                       {expandedItems.has(item.id) ? (
                         <ChevronUp className="h-5 w-5" />
                       ) : (
                         <ChevronDown className="h-5 w-5" />
                       )}
                     </motion.button>
-                    
+
+                    {/* Expanded Section */}
                     <AnimatePresence>
                       {expandedItems.has(item.id) && (
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
+                          animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="mt-4 pt-4 border-t border-secondary-200"
+                          className="mt-4 pt-2 border-t border-secondary-200 w-full text-left"
                         >
-                          <h4 className="font-medium text-secondary-800 mb-2">Ingredients:</h4>
+                          <h4 className="font-medium text-secondary-800 mb-2">
+                            Ingredients:
+                          </h4>
                           <ul className="text-sm text-secondary-600 space-y-1">
                             {item.ingredients.map((ingredient) => (
                               <li key={ingredient} className="flex items-center">
-                                <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"></div>
+                                <div className="w-1 h-1.5 bg-primary-500 rounded-full mr-2"></div>
                                 {ingredient}
                               </li>
                             ))}
@@ -259,36 +267,10 @@ const Menu: React.FC = () => {
                       )}
                     </AnimatePresence>
                   </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-primary-600">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl font-serif font-bold text-white mb-6">
-              Custom Menu Options Available
-            </h2>
-            <p className="text-xl text-primary-100 mb-8">
-              Have specific dietary requirements or preferences? We'd love to create a custom menu just for you.
-            </p>
-            <motion.button
-              className="px-8 py-3 bg-white text-primary-600 font-semibold rounded-full hover:bg-primary-50 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Request Custom Menu
-            </motion.button>
-          </motion.div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>

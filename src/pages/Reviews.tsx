@@ -9,63 +9,59 @@ const Reviews: React.FC = () => {
   const reviews = [
     {
       id: 1,
-      name: 'Sarah Johnson',
-      role: 'Bride',
+      name: 'mahesh shetty',
+      
       rating: 5,
-      comment: 'ARS Catering made our wedding day absolutely perfect! The food was exceptional, the presentation was elegant, and the service was flawless. Our guests are still talking about the amazing meal months later.',
-      image: 'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=300&h=300',
-      event: 'Wedding Reception - 150 guests',
-      date: 'June 2024'
+      comment: 'The team was professional, punctual, and very accommodating to our requests. They managed the setup smoothly and ensured everything was served hot and fresh I highly recommend ARS Food Caterers for any event where you want great food and excellent service.',
+                       
+      image: 'https://lh3.googleusercontent.com/a/ACg8ocI0liXcw3dXB7yJCq0eFkF5VonLHOqjtERhO-xQOIJ3RVaoXw=w50-h50-p-rp-mo-br100',
+      
+     
     },
     {
       id: 2,
-      name: 'Michael Chen',
-      role: 'Corporate Event Manager',
+      name: 'Shriganesh Bhat',
+
       rating: 5,
-      comment: 'We\'ve worked with ARS Catering for multiple corporate events, and they never disappoint. Professional, reliable, and the food quality is consistently outstanding. Highly recommend for any business event.',
-      image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300&h=300',
-      event: 'Annual Company Conference',
-      date: 'September 2024'
+      comment: 'ARS comes with the trust of quality food serving. Love the taste of every bite.',
+      image: 'https://lh3.googleusercontent.com/a-/ALV-UjUSiumbKPu7Qr-RGqDrH4Af2nlVv2CJi_gsZ9hPP8HzenG4MoJhmw=w50-h50-p-rp-mo-ba4-br100',
+     
     },
     {
       id: 3,
-      name: 'Emily Rodriguez',
-      role: 'Birthday Celebrant',
+      name: 'prahlad raj',
+      
       rating: 5,
-      comment: 'ARS Catering turned my 50th birthday party into an unforgettable celebration. The custom menu was perfect, and they accommodated all dietary restrictions beautifully. The team was professional and friendly.',
-      image: 'https://images.pexels.com/photos/1559486/pexels-photo-1559486.jpeg?auto=compress&cs=tinysrgb&w=300&h=300',
-      event: '50th Birthday Party - 75 guests',
-      date: 'August 2024'
+      comment: 'Superb and nice tastes food.',
+      image: 'https://lh3.googleusercontent.com/a/ACg8ocIBK1Mzh4X9BqpiuGdJoNwa9f78JnkD45OGhnXpEQ2i8vo_-Rs=w50-h50-p-rp-mo-br100',
+     
     },
     {
       id: 4,
-      name: 'David Thompson',
-      role: 'Event Organizer',
+      name: 'Raghavendra Kulal',
+      
       rating: 5,
-      comment: 'Outstanding service from start to finish! ARS Catering handled our charity gala with such professionalism. The food was restaurant-quality, and they managed the entire event seamlessly.',
-      image: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=300&h=300',
-      event: 'Charity Gala - 200 guests',
-      date: 'October 2024'
+      comment: 'ARS catering service was excellent. Food was delicious hygienic and servo down time. Highly recommended. Thank you ARS .',
+      image: 'https://lh3.googleusercontent.com/a-/ALV-UjU8M4i6hJWU5NU2w7brNQY8bUGov-dyR6vT-J8A6iA6OXAxcxem=w50-h50-p-rp-mo-br100',
+      
     },
     {
       id: 5,
-      name: 'Lisa Wang',
-      role: 'Anniversary Celebrant',
+      name: 'Lakshmi KM',
+      
       rating: 5,
-      comment: 'For our 25th anniversary, ARS Catering created an intimate dining experience that was simply magical. Every detail was perfect, from the appetizers to the dessert. Thank you for making our night so special!',
-      image: 'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=300&h=300',
-      event: '25th Anniversary Dinner - 30 guests',
-      date: 'November 2024'
+      comment: 'We recently hired ARS caterers for our event, and everything was perfect. The food was delicious, fresh, and beautifully presented. The team was professional, well-organized, and attentive to every detail. Our guests truly enjoyed the variety and taste. Highly recommend their service!',
+      image: 'https://lh3.googleusercontent.com/a/ACg8ocIP8wx39T3oeuFjzd4Bz9pbw-LkWSPunQD0bIsPyOWNPknCtA=w50-h50-p-rp-mo-br100',
+      
     },
     {
       id: 6,
-      name: 'Robert Martinez',
-      role: 'Business Owner',
+      name: 'Rashmi V',
+      
       rating: 5,
-      comment: 'ARS Catering has been our go-to for all company events. Their attention to detail, quality ingredients, and exceptional service make them stand out. They truly understand what makes an event successful.',
-      image: 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=300&h=300',
-      event: 'Product Launch Event',
-      date: 'December 2024'
+      comment: 'I recently used the ARS catering service for an event, and  iam very satisfied with their work. The food was fresh, tasty, and well presented. And the service was prompt and professional.The staffs were polite , cooperative ,and made sure everything ran smoothly.Overall it was great experience. And I would definitely recommend ARS catering service for functions, parties,or any special occasions.',
+      image: 'https://lh3.googleusercontent.com/a/ACg8ocKWuBa7cy_00AZJi52irdFYYPgodY4Qr44i87Z7VFSRIcLNTA=w50-h50-p-rp-mo-br100',
+      
     }
   ];
 
@@ -306,13 +302,16 @@ const Reviews: React.FC = () => {
             <p className="text-xl text-primary-100 mb-8">
               Experience the exceptional service and quality that our clients rave about.
             </p>
-            <motion.button
-              className="px-8 py-3 bg-white text-primary-600 font-semibold rounded-full hover:bg-primary-50 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Book Your Event Today
-            </motion.button>
+            <a href="tel:9845464183">
+  <motion.button
+    className="px-8 py-3 bg-white text-primary-600 font-semibold rounded-full hover:bg-primary-50 transition-all duration-300"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    Book Your Event Today
+  </motion.button>
+</a>
+
           </motion.div>
         </div>
       </section>

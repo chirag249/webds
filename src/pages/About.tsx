@@ -4,24 +4,7 @@ import { Award, Users, Heart, Clock } from 'lucide-react';
 
 const About: React.FC = () => {
   const timeline = [
-    {
-      year: '2010',
-      title: 'The Beginning',
-      description: 'Founded by Chef Alessandro Rodriguez with a vision to create extraordinary culinary experiences.',
-      milestone: 'Company Founded'
-    },
-    {
-      year: '2013',
-      title: 'Growing Recognition',
-      description: 'Received our first "Best Caterer" award and expanded our team of professional chefs.',
-      milestone: 'First Award Won'
-    },
-    {
-      year: '2016',
-      title: 'Major Expansion',
-      description: 'Opened our second kitchen facility and began serving corporate clients throughout the region.',
-      milestone: '500 Events Milestone'
-    },
+    
     {
       year: '2019',
       title: 'Innovation Leader',
@@ -167,8 +150,8 @@ const About: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6 text-white">
-                  <p className="text-sm opacity-90">Creating memories since 2010</p>
-                  <p className="text-2xl font-bold">15+ Years of Excellence</p>
+                  <p className="text-sm opacity-90">Creating memories since 2020</p>
+                  <p className="text-2xl font-bold">5+ Years of Excellence</p>
                 </div>
               </div>
             </motion.div>

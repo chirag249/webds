@@ -23,7 +23,7 @@ const Services: React.FC = () => {
       title: 'Birthday Parties',
       description: 'Celebrate life\'s milestones with our fun and festive birthday catering packages for all ages.',
       features: ['Themed decorations', 'Custom birthday cakes', 'Kid-friendly options', 'Party entertainment coordination'],
-      image: 'https://images.pexels.com/photos/1116558/pexels-photo-1116558.jpeg?auto=compress&cs=tinysrgb&w=600'
+      image: 'https://images.pexels.com/photos/7552330/pexels-photo-7552330.jpeg'
     },
     {
       icon: Utensils,

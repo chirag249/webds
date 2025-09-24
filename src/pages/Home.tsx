@@ -36,7 +36,7 @@ const Home: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
           <img
-            src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080"
+            src="https://images.pexels.com/photos/8818723/pexels-photo-8818723.jpeg"
             alt="Catering Hero"
             className="w-full h-full object-cover"
           />

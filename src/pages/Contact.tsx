@@ -44,25 +44,25 @@ const Contact: React.FC = () => {
     {
       icon: Phone,
       title: 'Phone',
-      content: '+1 (555) 123-4567',
-      link: 'tel:+15551234567'
+      content: '9845464183',
+      link: 'tel:9845464183'
     },
     {
       icon: Mail,
       title: 'Email',
-      content: 'info@arscatering.com',
-      link: 'mailto:info@arscatering.com'
+      content: 'arscaterersblr@gmail.com',
+      link: 'mailto:arscaterersblr@gmail.com'
     },
     {
       icon: MapPin,
       title: 'Address',
-      content: '123 Culinary Street, Foodville, FC 12345',
-      link: 'https://maps.google.com/?q=123+Culinary+Street+Foodville+FC+12345'
+      content: '1st Flore, 2, Uttarahalli Main Rd, BHCS Layout II Stage, Canara Bank Colony, Chikkalasandra, Bengaluru, Karnataka 560061',
+      link: 'https://maps.app.goo.gl/AsK2syzQm8EWDNcv8'
     },
     {
       icon: Clock,
       title: 'Business Hours',
-      content: 'Mon-Fri: 9AM-6PM, Sat: 10AM-4PM',
+      content: 'Mon-Sun: 24 hours',
       link: null
     }
   ];
@@ -202,7 +202,7 @@ const Contact: React.FC = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder="(123) 456-7890"
                     />
                   </div>
                   <div>
@@ -307,23 +307,17 @@ const Contact: React.FC = () => {
                 our operation and discuss your event in person.
               </p>
 
-              <div className="bg-secondary-100 rounded-xl h-96 flex items-center justify-center mb-6">
-                <div className="text-center text-secondary-600">
-                  <MapPin className="h-16 w-16 mx-auto mb-4" />
-                  <p className="text-lg font-medium">Interactive Map</p>
-                  <p className="text-sm">
-                    123 Culinary Street<br />
-                    Foodville, FC 12345
-                  </p>
-                  <a
-                    href="https://maps.google.com/?q=123+Culinary+Street+Foodville+FC+12345"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mt-4 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
-                  >
-                    Open in Google Maps
-                  </a>
-                </div>
+              <div className="rounded-xl overflow-hidden shadow-lg h-96 mb-6">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.9875140794015!2d77.54609027560909!3d12.908523887401055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3f3a0852a265%3A0xc555550972f88331!2sARS%20CATERER'S!5e0!3m2!1sen!2sin!4v1758638235385!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen={true}
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="ARS Caterers Location"
+                ></iframe>
               </div>
 
               <div className="bg-white rounded-xl shadow-lg p-6">
@@ -408,3 +402,4 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
+
