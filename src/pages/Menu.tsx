@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import React from "react"; // Removed useState
+import { motion } from "framer-motion"; // Removed AnimatePresence
+// Removed ChevronDown, ChevronUp as they are no longer used
 import "./Menu.css"; // styles for book/card effect
 
 interface MenuItem {
@@ -14,7 +14,7 @@ interface MenuItem {
 }
 
 const Menu: React.FC = () => {
-  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
+  // --- The `expandedItems` state is no longer needed ---
 
   const menuItems: MenuItem[] = [
     {
@@ -145,7 +145,7 @@ const Menu: React.FC = () => {
       dietary: ["Vegetarian"],
       price: "-",
       image:
-        "https://www.pexels.com/photo/kaju-katri-18488310/",
+        "https://images.pexels.com/photos/18488310/pexels-photo-18488310.jpeg",
     },
     {
       id: "ice-cream",
@@ -166,13 +166,7 @@ const Menu: React.FC = () => {
     },
   ];
 
-  const toggleExpanded = (itemId: string) => {
-    const newExpanded = new Set(expandedItems);
-    newExpanded.has(itemId)
-      ? newExpanded.delete(itemId)
-      : newExpanded.add(itemId);
-    setExpandedItems(newExpanded);
-  };
+  // --- The `toggleExpanded` function is no longer needed ---
 
   const renderItemName = (name: string | string[]) => {
     if (Array.isArray(name)) {
@@ -187,10 +181,20 @@ const Menu: React.FC = () => {
     return <p className="text-center font-semibold text-lg">{name}</p>;
   };
 
+  const backgroundImageUrl = "https://images.pexels.com/photos/2253643/pexels-photo-2253643.jpeg";
+
   return (
-    <div className="min-h-screen pt-20 bg-gray-50">
+    <div
+      className="min-h-screen pt-20"
+      style={{
+        backgroundImage: `url(${backgroundImageUrl})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary-50 to-secondary-50">
+      <section className="py-20 bg-gradient-to-br from-primary-50/90 to-secondary-50/90 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             className="text-5xl font-serif font-bold text-secondary-800 mb-6"
@@ -226,46 +230,10 @@ const Menu: React.FC = () => {
                       }
                       className="w-32 h-32 object-cover rounded-md mb-2 shadow-md"
                     />
-                    <p className="text-sm text-center">{item.description}</p>
+                    <p className="text-sm text-center mt-2">{item.description}</p>
 
-                    {/* Expand Button */}
-                    <motion.button
-                      onClick={() => toggleExpanded(item.id)}
-                      className="mt-3 flex items-center justify-between w-full text-primary-600 hover:text-primary-700 font-medium"
-                      whileHover={{ x: 5 }}
-                    >
-                      <span>View Details</span>
-                      {expandedItems.has(item.id) ? (
-                        <ChevronUp className="h-5 w-5" />
-                      ) : (
-                        <ChevronDown className="h-5 w-5" />
-                      )}
-                    </motion.button>
+                    {/* --- REMOVED THE EXPAND BUTTON AND EXPANDED SECTION --- */}
 
-                    {/* Expanded Section */}
-                    <AnimatePresence>
-                      {expandedItems.has(item.id) && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="mt-4 pt-2 border-t border-secondary-200 w-full text-left"
-                        >
-                          <h4 className="font-medium text-secondary-800 mb-2">
-                            Ingredients:
-                          </h4>
-                          <ul className="text-sm text-secondary-600 space-y-1">
-                            {item.ingredients.map((ingredient) => (
-                              <li key={ingredient} className="flex items-center">
-                                <div className="w-1 h-1.5 bg-primary-500 rounded-full mr-2"></div>
-                                {ingredient}
-                              </li>
-                            ))}
-                          </ul>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
                   </div>
                 </div>
               </div>
